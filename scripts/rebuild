@@ -1,0 +1,12 @@
+~/nix-state/scripts/rebuild_specific
+
+sudo rm -r /etc/nixos/core
+sudo mkdir /etc/nixos/core
+
+sudo rm -r /etc/nixos/home-manager
+sudo mkdir /etc/nixos/home-manager
+
+sudo rm /etc/nixos/flake.nix
+
+sudo cp -R ~/nix-state/nixos-configuration/* /etc/nixos/
+sudo nixos-rebuild switch
