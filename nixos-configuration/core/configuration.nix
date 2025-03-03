@@ -20,8 +20,12 @@
       ./modules/boot.nix
       ./modules/time.nix
       ./modules/flatpak.nix
+      ./modules/gc.nix
       
     ];
+
+
+  
 
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -56,6 +60,7 @@
     pkgs.jdk
     picom
     egl-wayland
+    openvpn
   ];
 
   system.stateVersion = "23.05";

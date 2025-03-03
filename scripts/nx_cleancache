@@ -1,0 +1,5 @@
+nix-collect-garbage
+nix store gc --delete-older-than 30d
+nix-env --delete-generations old
+rm -rf ~/.cache/nix/*
+
