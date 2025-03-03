@@ -9,6 +9,7 @@
     ./fuzzel
     ./git
     ./neovim
+    ./chrome
   ];
 
   home.username = "talkingfoxmid";
