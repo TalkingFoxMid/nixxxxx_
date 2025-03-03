@@ -20,24 +20,17 @@
       ./modules/boot.nix
       ./modules/time.nix
       ./modules/flatpak.nix
+      ./modules/pipewire.nix
+      ./modules/lutris.nix
+      ./modules/obsidian.nix
+      ./modules/kubernetes.nix
+      ./modules/sws.nix
       ./modules/gc.nix
-      
+
     ];
 
 
-  
-
-
   nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  programs.adb.enable = true;
-
-
-  # Set your time zone.
-  time.timeZone = "Asia/Yekaterinburg";
-
-
-  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -49,21 +42,22 @@
   # $ nix search wget
   environment.pathsToLink = ["libexec"];
 
-
+programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
-    polkit-kde-agent
+    openvpn
     wl-clipboard
     bind
     patchelf
     transmission_4-gtk
     gnupg
-    pkgs.jdk
     picom
     egl-wayland
+    distrobox
     openvpn
   ];
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
+
 }
 
 
