@@ -3,6 +3,9 @@
 {
    wayland.windowManager.hyprland = {
       enable = true;
+      systemd.variables = ["--all"];
+
+
       settings = {
         monitor = [
           ",preferred,auto,auto"
@@ -13,6 +16,7 @@
 
         env = [
           "XCURSOR_SIZE,24"
+          "PATH,$PATH:/home/talkingfoxmid/nix-state/scripts/"
         ];
 
         "$mainMod" = "SUPER";
