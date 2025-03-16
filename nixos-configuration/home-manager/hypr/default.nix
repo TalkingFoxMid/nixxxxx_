@@ -80,7 +80,7 @@
 
         bind = [
           # Application launchers
-          "$mainMod, Return, exec, alacritty"
+          "$mainMod, Return, exec, kitty"
           "$mainModShift, Q, killactive,"
           "$mainMod, M, exit,"
           "$mainMod, E, exec, dolphin"

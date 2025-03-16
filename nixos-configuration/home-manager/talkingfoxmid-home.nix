@@ -5,6 +5,7 @@
   # manage.
 
   imports = [
+    ./feh
     ./alacritty
     ./kitty
     ./fuzzel
