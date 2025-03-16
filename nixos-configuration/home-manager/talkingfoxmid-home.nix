@@ -11,6 +11,7 @@
     ./git
     ./neovim
     ./chrome
+    ./hypr
   ];
 
   home.username = "talkingfoxmid";
@@ -41,7 +42,8 @@
   };
 
   programs.home-manager.enable = true;
-  
+
+
   programs.neovim = {
     enable = true;
     extraConfig = 

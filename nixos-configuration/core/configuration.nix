@@ -9,7 +9,6 @@
       ../machine/hardware-configuration.nix
       ./modules/display-manager.nix
       ./modules/bluetooth.nix
-      ./modules/wm.nix
       ./modules/polkit.nix
       ./modules/virtualisation.nix
       ./modules/networking.nix
@@ -26,7 +25,6 @@
       ./modules/kubernetes.nix
       ./modules/sws.nix
       ./modules/gc.nix
-      ./modules/xdg-portal.nix
 
     ];
 
