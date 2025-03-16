@@ -46,6 +46,7 @@ programs.zsh.enable = true;
     openvpn
     wl-clipboard
     bind
+    grimblast
     patchelf
     transmission_4-gtk
     gnupg

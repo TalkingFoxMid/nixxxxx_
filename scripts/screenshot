@@ -1,4 +1,8 @@
 #!/bin/sh
-# Select a region and capture it to clipboard
-grim -g "$(slurp)" - | wl-copy
+# Select a region and capture it to clipboard with screen freezing
+# The --freeze option pauses the screen during selection
+grimblast --freeze copy area
 
+# Alternative method if you prefer controlling more parameters:
+# hyprctl dispatch focuscurrentwindow
+# grim -g "$(slurp -f '%x %y %w %h')" - | wl-copy
