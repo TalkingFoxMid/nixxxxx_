@@ -1,7 +1,9 @@
 {users, config, pkgs, ...}:
 {
   programs.git = {
-    enable = true;
+      enable = true;
+      userName = "TalkingFoxMid";
+      userEmail = "futureinrevolution@gmail.com";
   };
 
 }

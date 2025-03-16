@@ -6,6 +6,7 @@
 
   imports = [
     ./alacritty
+    ./kitty
     ./fuzzel
     ./git
     ./neovim

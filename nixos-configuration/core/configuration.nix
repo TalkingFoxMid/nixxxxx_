@@ -54,6 +54,12 @@ programs.zsh.enable = true;
     egl-wayland
     distrobox
     openvpn
+    dbeaver-bin
+    postman
+    pass
+    grim
+    vlc
+
   ];
 
   system.stateVersion = "24.05";
