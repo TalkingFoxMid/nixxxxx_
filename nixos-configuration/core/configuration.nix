@@ -26,6 +26,7 @@
       ./modules/kubernetes.nix
       ./modules/sws.nix
       ./modules/gc.nix
+      ./modules/xdg-portal.nix
 
     ];
 
