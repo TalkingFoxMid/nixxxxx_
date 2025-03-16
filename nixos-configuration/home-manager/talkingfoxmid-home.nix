@@ -16,9 +16,10 @@
 
   home.username = "talkingfoxmid";
   home.homeDirectory = "/home/talkingfoxmid";
-  home.sessionPath = [
-    "/home/talkingfoxmid/nix-state/scripts/"
-  ];
+
+  # Add scripts to PATH for both Hyprland and Fuzzel
+  home.sessionPath = [ "/home/talkingfoxmid/nix-state/scripts/" ];
+  home.sessionVariables.PATH = "$PATH:/home/talkingfoxmid/nix-state/scripts/";
 
   home.stateVersion = "24.05";
 

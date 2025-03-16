@@ -1,0 +1,4 @@
+#!/bin/sh
+# Select a region and capture it to clipboard
+grim -g "$(slurp)" - | wl-copy
+

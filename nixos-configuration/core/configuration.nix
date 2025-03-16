@@ -54,6 +54,7 @@ programs.zsh.enable = true;
     distrobox
     openvpn
     dbeaver-bin
+    slurp
     postman
     pass
     grim

@@ -121,7 +121,6 @@
           "$mainMod SHIFT, 0, movetoworkspace, 10"
 
           # Special workspace
-          "$mainMod, S, togglespecialworkspace, magic"
           "$mainMod SHIFT, S, movetoworkspace, special:magic"
         ];
 
