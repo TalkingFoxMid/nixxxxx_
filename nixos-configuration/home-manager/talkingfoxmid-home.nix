@@ -6,7 +6,6 @@
 
   imports = [
     ./feh
-    ./alacritty
     ./kitty
     ./fuzzel
     ./git
