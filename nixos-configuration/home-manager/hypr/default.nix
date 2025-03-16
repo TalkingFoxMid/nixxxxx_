@@ -94,6 +94,9 @@
           "$mainMod, P, pseudo,"
           "$mainMod, J, togglesplit,"
 
+          # Screenshot (using the screenshot script)
+          "$mainMod, S, exec, screenshot"
+
           # Focus movement
           "$mainMod, left, movefocus, l"
           "$mainMod, right, movefocus, r"
@@ -125,7 +128,8 @@
           "$mainMod SHIFT, 0, movetoworkspace, 10"
 
           # Special workspace
-          "$mainMod SHIFT, S, movetoworkspace, special:magic"
+          "$mainMod, grave, togglespecialworkspace, magic"
+          "$mainMod SHIFT, grave, movetoworkspace, special:magic"
         ];
 
         bindm = [
