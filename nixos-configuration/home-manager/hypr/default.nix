@@ -8,8 +8,7 @@
 
       settings = {
         monitor = [
-          ",preferred,auto,auto"
-          "HDMI-A-1, 1920x1080, 0x0, 1"
+	  "DP-1, 3840x2160@239.99, 0x0, 1.50"
         ];
 
         exec-once = "hyprpaper & waybar";

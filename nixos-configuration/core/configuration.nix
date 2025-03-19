@@ -31,6 +31,12 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  # Mount point for nvme1n1p4 drive
+  fileSystems."/mnt/nn" = {
+    device = "/dev/nvme1n1p4";
+    fsType = "ext4";
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 	programs.gnupg.agent = {                                                      
@@ -54,12 +60,13 @@ programs.zsh.enable = true;
     egl-wayland
     distrobox
     openvpn
-    dbeaver-bin
     slurp
     postman
     pass
     grim
     vlc
+    python3
+    python3Packages.pip
 
   ];
 

@@ -10,7 +10,6 @@
     ./fuzzel
     ./git
     ./neovim
-    ./chrome
     ./hypr
   ];
 
