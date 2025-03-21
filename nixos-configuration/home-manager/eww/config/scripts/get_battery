@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Check if battery exists
+if [ -d "/sys/class/power_supply/BAT0" ]; then
+  capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+  echo "$capacity"
+elif [ -d "/sys/class/power_supply/BAT1" ]; then
+  capacity=$(cat /sys/class/power_supply/BAT1/capacity)
+  echo "$capacity"
+else
+  echo "100"  # If no battery is found
+fi

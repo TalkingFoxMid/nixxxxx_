@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Check wireless connection
+if [ "$(nmcli radio wifi)" = "enabled" ]; then
+  SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d':' -f2)
+  if [ -n "$SSID" ]; then
+    echo "$SSID"
+    exit 0
+  fi
+fi
+
+# Check if we have ethernet
+ETH_STATUS=$(nmcli -t -f DEVICE,STATE dev | grep "^eth" | cut -d':' -f2)
+[ "$ETH_STATUS" = "connected" ] && echo "Ethernet" || echo "Disconnected"

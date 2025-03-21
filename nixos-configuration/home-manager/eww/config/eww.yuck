@@ -1,0 +1,111 @@
+;; Define variables and polling
+(defpoll time :interval "1s" "date '+%H:%M'")
+(defpoll date :interval "1m" "date '+%b %d, %Y'")
+(defpoll volume :interval "1s" "scripts/get_volume")
+(defpoll cpu :interval "1s" "scripts/get_cpu")
+(defpoll memory :interval "1s" "scripts/get_memory")
+(defpoll disk :interval "30s" "scripts/get_disk")
+(defpoll battery :interval "30s" "scripts/get_battery")
+(defpoll network :interval "5s" "scripts/get_network")
+(defpoll current_workspace :interval "100ms" "hyprctl activeworkspace | grep ID | awk '{print $2}'")
+
+;; Widget definitions
+(defwidget bar []
+  (centerbox :orientation "h" :class "bar"
+    (left)
+    (center)
+    (right)))
+
+(defwidget left []
+  (box :orientation "h" :halign "start" :space-evenly false
+    (workspaces)
+    (system)))
+
+(defwidget center []
+  (box :orientation "h" :halign "center" :space-evenly false
+    (time-module)))
+
+(defwidget right []
+  (box :orientation "h" :halign "end" :space-evenly false
+    (network-module)
+    (volume-module)
+    (battery-module)
+    (power-button)))
+
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "h"
+       :space-evenly true
+       :halign "start"
+    (button :class "workspace-button ${current_workspace == 1 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 1" "1")
+    (button :class "workspace-button ${current_workspace == 2 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 2" "2")
+    (button :class "workspace-button ${current_workspace == 3 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 3" "3")
+    (button :class "workspace-button ${current_workspace == 4 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 4" "4")
+    (button :class "workspace-button ${current_workspace == 5 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 5" "5")
+    (button :class "workspace-button ${current_workspace == 6 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 6" "6")
+    (button :class "workspace-button ${current_workspace == 7 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 7" "7")
+    (button :class "workspace-button ${current_workspace == 8 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 8" "8")
+    (button :class "workspace-button ${current_workspace == 9 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 9" "9")
+    (button :class "workspace-button ${current_workspace == 10 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 10" "0")))
+
+(defwidget system []
+  (box :class "system-info"
+       :orientation "h"
+       :space-evenly false
+    (box :class "cpu-box"
+      (label :class "cpu-label" :text "CPU")
+      (label :class "cpu-value" :text "${cpu}%"))
+    (box :class "memory-box"
+      (label :class "memory-label" :text "MEM")
+      (label :class "memory-value" :text "${memory}%"))
+    (box :class "disk-box"
+      (label :class "disk-label" :text "DISK")
+      (label :class "disk-value" :text "${disk}%"))))
+
+(defwidget time-module []
+  (box :class "time-info"
+       :orientation "h"
+       :space-evenly false
+    (label :class "time" :text time)
+    (label :class "date" :text date)))
+
+(defwidget volume-module []
+  (box :class "volume-box"
+       :orientation "h"
+       :space-evenly false
+    (label :class "volume-icon" :text "")
+    (label :class "volume-value" :text "${volume}%")))
+
+(defwidget network-module []
+  (box :class "network-box"
+       :orientation "h"
+       :space-evenly false
+    (label :class "network-icon" :text "")
+    (label :class "network-ssid" :text network)))
+
+(defwidget battery-module []
+  (box :class "battery-box"
+       :orientation "h"
+       :space-evenly false
+    (label :class "battery-icon ${battery >= 80 ? 'high' : battery >= 40 ? 'medium' : battery >= 20 ? 'low' : 'critical'}" 
+           :text "")
+    (label :class "battery-value" :text "${battery}%")))
+
+(defwidget power-button []
+  (button :class "power-button"
+          :onclick "fuzzel -dmenu -p 'Power Menu' <<< $'Shutdown\nReboot\nLogout\nSuspend' | ${EWW_CMD} exec 'scripts/powermenu'"
+          "⏻"))
+
+;; Windows
+(defwindow bar
+  :monitor 0
+  :exclusive true
+  :geometry (geometry :x "0%"
+                     :y "10px"
+                     :width "100%"
+                     :height "30px"
+                     :anchor "top center")
+  :stacking "fg"
+  :windowtype "dock"
+  :wm-ignore false
+  (bar))

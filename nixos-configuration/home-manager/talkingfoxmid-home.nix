@@ -11,6 +11,7 @@
     ./git
     ./neovim
     ./hypr
+    ./eww
   ];
 
   home.username = "talkingfoxmid";
@@ -26,6 +27,8 @@
     starfetch
     btop
     hyprpaper
+    jq
+    font-awesome
   ];
 
   home.file = {

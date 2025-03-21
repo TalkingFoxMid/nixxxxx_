@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Read from stdin
+input=$(cat)
+
+case "$input" in
+  "Shutdown")
+    systemctl poweroff
+    ;;
+  "Reboot")
+    systemctl reboot
+    ;;
+  "Logout")
+    hyprctl dispatch exit
+    ;;
+  "Suspend")
+    systemctl suspend

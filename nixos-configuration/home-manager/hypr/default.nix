@@ -11,7 +11,7 @@
 	  "DP-1, 3840x2160@239.99, 0x0, 1.50"
         ];
 
-        exec-once = "hyprpaper";
+        exec-once = ["hyprpaper" "eww daemon" "eww open bar"];
 
         env = [
           "XCURSOR_SIZE,24"

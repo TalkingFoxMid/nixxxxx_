@@ -63,6 +63,7 @@ programs.zsh.enable = true;
     slurp
     postman
     pass
+    eww
     grim
     vlc
     python3

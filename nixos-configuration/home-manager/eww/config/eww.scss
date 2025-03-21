@@ -1,0 +1,161 @@
+// Gruvbox colors
+$bg_color: #282828;
+$bg_color_transparent: rgba(40, 40, 40, 0.85);
+$fg_color: #ebdbb2;
+$red: #cc241d;
+$green: #98971a;
+$yellow: #d79921;
+$blue: #458588;
+$purple: #b16286;
+$aqua: #689d6a;
+$orange: #d65d0e;
+$gray: #928374;
+
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+  font-size: 14px;
+}
+
+.bar {
+  background-color: $bg_color_transparent;
+  border-radius: 10px;
+  padding: 4px;
+  margin: 5px 10px;
+}
+
+// Workspaces
+.workspaces {
+  padding: 0 8px;
+}
+
+.workspace-button {
+  padding: 0 6px;
+  color: $gray;
+  font-weight: bold;
+  
+  &.active {
+    color: $yellow;
+  }
+  
+  &:hover {
+    color: $fg_color;
+  }
+}
+
+// System info
+.system-info {
+  padding: 0 10px;
+}
+
+.cpu-box, .memory-box, .disk-box {
+  margin: 0 5px;
+}
+
+.cpu-label, .memory-label, .disk-label {
+  color: $fg_color;
+  font-size: 13px;
+  padding-right: 3px;
+}
+
+.cpu-value {
+  color: $blue;
+}
+
+.memory-value {
+  color: $purple;
+}
+
+.disk-value {
+  color: $aqua;
+}
+
+// Date and time
+.time-info {
+  background-color: $bg_color;
+  border-radius: 8px;
+  padding: 0 12px;
+  margin: 0 5px;
+}
+
+.time {
+  color: $yellow;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.date {
+  color: $orange;
+  padding-left: 5px;
+  font-size: 13px;
+}
+
+// Volume
+.volume-box {
+  padding: 0 10px;
+}
+
+.volume-icon {
+  color: $green;
+  font-size: 16px;
+  padding-right: 5px;
+}
+
+.volume-value {
+  color: $fg_color;
+}
+
+// Network
+.network-box {
+  padding: 0 10px;
+}
+
+.network-icon {
+  color: $aqua;
+  font-size: 16px;
+  padding-right: 5px;
+}
+
+.network-ssid {
+  color: $fg_color;
+}
+
+// Battery
+.battery-box {
+  padding: 0 10px;
+}
+
+.battery-icon {
+  font-size: 16px;
+  padding-right: 5px;
+  
+  &.charging {
+    color: $green;
+  }
+  
+  &.high {
+    color: $green;
+  }
+  
+  &.medium {
+    color: $yellow;
+  }
+  
+  &.low {
+    color: $orange;
+  }
+  
+  &.critical {
+    color: $red;
+  }
+}
+
+.battery-value {
+  color: $fg_color;
+}
+
+// Power menu
+.power-button {
+  color: $red;
+  font-size: 16px;
+  padding: 0 12px;

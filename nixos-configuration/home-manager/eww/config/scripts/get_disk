@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Get disk usage percentage
+df -h / | awk 'NR==2 {print $5}' | tr -d '%'
