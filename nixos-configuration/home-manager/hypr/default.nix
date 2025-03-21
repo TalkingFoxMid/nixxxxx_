@@ -9,7 +9,7 @@
       settings = {
         monitor = [
 	  "DP-1, 3840x2160@239.99, 0x0, 1.50"
-        ];
+        ]; 
 
         exec-once = ["hyprpaper" "eww daemon" "eww open bar"];
 
@@ -82,13 +82,30 @@
           force_default_wallpaper = -1;
         };
 
+        # Define rules for the btop and nvtop windows to make them floating
+        windowrulev2 = [
+          # btop rules
+          "float,class:^(kitty-btop)$"
+          "size 1600 900,class:^(kitty-btop)$"
+          "center,class:^(kitty-btop)$"
+          "workspace special:btop,class:^(kitty-btop)$"
+          
+          # nvtop rules
+          "float,class:^(kitty-nvtop)$"
+          "size 1400 800,class:^(kitty-nvtop)$"
+          "center,class:^(kitty-nvtop)$"
+          "workspace special:nvtop,class:^(kitty-nvtop)$"
+        ];
+        
         bind = [
           # Application launchers
           "$mainMod, Return, exec, kitty"
           "$mainModShift, Q, killactive,"
           "$mainMod, M, exit,"
-          "$mainMod, E, exec, dolphin"
+          "$mainMod, E, exec, dolphin" 
           "$mainMod, F, exec, fuzzel"
+          ", F12, exec, kitty --class kitty-btop -e btop"
+          ", F12, togglespecialworkspace, btop"
           "$mainMod, V, togglefloating,"
           "$mainMod, R, exec, wofi --show drun"
           "$mainMod, P, pseudo,"
@@ -96,6 +113,10 @@
 
           # Screenshot (using the screenshot script)
           "$mainMod, S, exec, screenshot"
+          
+          # Toggle nvtop overlay with F11
+          ", F11, exec, kitty --class kitty-nvtop -e nvtop"
+          ", F11, togglespecialworkspace, nvtop"
 
           # Focus movement
           "$mainMod, left, movefocus, l"
@@ -130,6 +151,10 @@
           # Special workspace
           "$mainMod, grave, togglespecialworkspace, magic"
           "$mainMod SHIFT, grave, movetoworkspace, special:magic"
+          
+          # Close monitoring windows
+          "$mainMod, Escape, execr, hyprctl dispatch closewindow kitty-btop"
+          "$mainMod SHIFT, Escape, execr, hyprctl dispatch closewindow kitty-nvtop"
         ];
 
         bindm = [
