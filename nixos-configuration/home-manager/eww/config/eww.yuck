@@ -6,7 +6,7 @@
 (defpoll memory :interval "1s" "scripts/get_memory")
 (defpoll disk :interval "30s" "scripts/get_disk")
 (defpoll network :interval "5s" "scripts/get_network")
-(defpoll current_workspace :interval "100ms" "hyprctl activeworkspace | grep ID | awk '{print $2}'")
+(defpoll current_workspace :interval "100ms" "hyprctl activeworkspace | grep 'workspace ID' | head -n 1 | awk '{print $3}'")
 
 ;; Widget definitions
 (defwidget bar []
