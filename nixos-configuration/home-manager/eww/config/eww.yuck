@@ -5,7 +5,6 @@
 (defpoll cpu :interval "1s" "scripts/get_cpu")
 (defpoll memory :interval "1s" "scripts/get_memory")
 (defpoll disk :interval "30s" "scripts/get_disk")
-(defpoll battery :interval "30s" "scripts/get_battery")
 (defpoll network :interval "5s" "scripts/get_network")
 (defpoll current_workspace :interval "100ms" "hyprctl activeworkspace | grep ID | awk '{print $2}'")
 
@@ -29,7 +28,6 @@
   (box :orientation "h" :halign "end" :space-evenly false
     (network-module)
     (volume-module)
-    (battery-module)
     (power-button)))
 
 (defwidget workspaces []
@@ -83,13 +81,6 @@
     (label :class "network-icon" :text "")
     (label :class "network-ssid" :text network)))
 
-(defwidget battery-module []
-  (box :class "battery-box"
-       :orientation "h"
-       :space-evenly false
-    (label :class "battery-icon ${battery >= 80 ? 'high' : battery >= 40 ? 'medium' : battery >= 20 ? 'low' : 'critical'}" 
-           :text "")
-    (label :class "battery-value" :text "${battery}%")))
 
 (defwidget power-button []
   (button :class "power-button"
