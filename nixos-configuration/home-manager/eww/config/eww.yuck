@@ -25,9 +25,7 @@
 
 (defwidget right []
   (box :orientation "h" :halign "end" :space-evenly false
-    (network-module)
-    (volume-module)
-    (power-button)))
+    (volume-module)))
 
 (defwidget workspaces []
   (box :class "workspaces"
@@ -71,24 +69,6 @@
     (label :class "volume-value" :text "${volume}%")))
 
 (defwidget network-module []
-  (box :class "network-box"
-       :orientation "h"
-       :space-evenly false
-    (label :class "network-icon" :text "")
-    (label :class "network-ssid" :text network)))
-
-
-(defwidget power-button []
-  (button :class "power-button"
-          :onclick "fuzzel -dmenu -p 'Power Menu' <<< $'Shutdown\nReboot\nLogout\nSuspend' | ${EWW_CMD} exec 'scripts/powermenu'"
-          "⏻"))
-
-;; Windows
-(defwindow bar
-  :monitor 0
-  :exclusive true
-  :geometry (geometry :x "0%"
-                     :y "10px"
                      :width "100%"
                      :height "30px"
                      :anchor "top center")
