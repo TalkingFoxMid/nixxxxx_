@@ -155,6 +155,10 @@
           # Close monitoring windows
           "$mainMod, Escape, execr, hyprctl dispatch closewindow kitty-btop"
           "$mainMod SHIFT, Escape, execr, hyprctl dispatch closewindow kitty-nvtop"
+          
+          # Volume control using Fn keys
+          ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
+          ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
         ];
 
         bindm = [

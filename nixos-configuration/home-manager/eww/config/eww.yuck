@@ -1,7 +1,7 @@
 ;; Define variables and polling
 (defpoll time :interval "1s" "date '+%H:%M'")
 (defpoll date :interval "1m" "date '+%b %d, %Y'")
-(defpoll volume :interval "1s" "scripts/get_volume")
+(defpoll volume :interval "200ms" "scripts/get_volume")
 (defpoll cpu_temp :interval "3s" "scripts/get_cpu_temp")
 (defpoll gpu_temp :interval "3s" "scripts/get_gpu_temp")
 (defpoll network :interval "5s" "scripts/get_network")
