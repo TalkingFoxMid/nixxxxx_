@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Get NVIDIA GPU temperature in degrees Celsius
+nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader
+

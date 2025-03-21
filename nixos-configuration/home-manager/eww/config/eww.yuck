@@ -2,9 +2,8 @@
 (defpoll time :interval "1s" "date '+%H:%M'")
 (defpoll date :interval "1m" "date '+%b %d, %Y'")
 (defpoll volume :interval "1s" "scripts/get_volume")
-(defpoll cpu :interval "1s" "scripts/get_cpu")
-(defpoll memory :interval "1s" "scripts/get_memory")
-(defpoll disk :interval "30s" "scripts/get_disk")
+(defpoll cpu_temp :interval "3s" "scripts/get_cpu_temp")
+(defpoll gpu_temp :interval "3s" "scripts/get_gpu_temp")
 (defpoll network :interval "5s" "scripts/get_network")
 (defpoll current_workspace :interval "100ms" "hyprctl activeworkspace | grep 'workspace ID' | head -n 1 | awk '{print $3}'")
 
@@ -49,16 +48,13 @@
 (defwidget system []
   (box :class "system-info"
        :orientation "h"
-       :space-evenly false
-    (box :class "cpu-box"
-      (label :class "cpu-label" :text "CPU")
-      (label :class "cpu-value" :text "${cpu}%"))
-    (box :class "memory-box"
-      (label :class "memory-label" :text "MEM")
-      (label :class "memory-value" :text "${memory}%"))
-    (box :class "disk-box"
-      (label :class "disk-label" :text "DISK")
-      (label :class "disk-value" :text "${disk}%"))))
+       :space-evenly false 
+    (box :class "cpu-temp-box"
+      (label :class "cpu-temp-label" :text "CPU")
+      (label :class "cpu-temp-value" :text "${cpu_temp}°C"))
+    (box :class "gpu-temp-box"
+      (label :class "gpu-temp-label" :text "GPU")
+      (label :class "gpu-temp-value" :text "${gpu_temp}°C"))))
 
 (defwidget time-module []
   (box :class "time-info"

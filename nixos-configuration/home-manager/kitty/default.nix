@@ -49,6 +49,20 @@
       # Cursor color
       cursor = "#ebdbb2";
       cursor_text_color = "#282828";
+      
+      # Allow using Ctrl+Shift+C and Ctrl+Shift+V for copy/paste
+      copy_on_select = "clipboard";
+      strip_trailing_spaces = "smart";
+      
+      # Enable mouse selection to automatically copy to clipboard
+      select_by_word_characters = "@-./_~?&=%+#";
+    };
+    
+    # Add keybindings for copy/paste using Ctrl+C and Ctrl+V
+    keybindings = {
+      "ctrl+c" = "copy_or_interrupt";
+      "ctrl+v" = "paste_from_clipboard";
+      "ctrl+shift+c" = "copy_to_clipboard";
     };
   };
 }

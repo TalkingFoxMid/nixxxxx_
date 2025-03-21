@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Get CPU temperature in degrees Celsius
+# This uses sensors command to get the CPU temperature - adjust the grep pattern if needed for your CPU model
+sensors 2>/dev/null | grep "Tctl:" | awk '{print int($2)}' | tr -d '+'
+

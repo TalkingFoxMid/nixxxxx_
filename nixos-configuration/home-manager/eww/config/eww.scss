@@ -57,31 +57,31 @@ $gray: #928374;
   }
 }
 
-// System info
+// Temperature info
 .system-info {
   padding: 0 10px;
 }
 
-.cpu-box, .memory-box, .disk-box {
+.cpu-temp-box, .gpu-temp-box {
   margin: 0 5px;
 }
 
-.cpu-label, .memory-label, .disk-label {
+.cpu-temp-label, .gpu-temp-label {
   color: $fg_color;
   font-size: 13px;
   padding-right: 3px;
 }
 
-.cpu-value {
-  color: $blue;
+.cpu-temp-value {
+  color: $yellow;
 }
 
 .memory-value {
   color: $purple;
 }
 
-.disk-value {
-  color: $aqua;
+.gpu-temp-value {
+  color: $red;
 }
 
 // Date and time

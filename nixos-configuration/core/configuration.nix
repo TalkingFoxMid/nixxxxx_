@@ -25,6 +25,7 @@
       ./modules/kubernetes.nix
       ./modules/sws.nix
       ./modules/gc.nix
+      ./modules/nvidia-power-limit.nix
 
     ];
 
