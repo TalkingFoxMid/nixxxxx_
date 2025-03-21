@@ -1,1 +1,1 @@
-nvim ~/.nixos-configuration
+nvim ~/nix-state/nixos-configuration

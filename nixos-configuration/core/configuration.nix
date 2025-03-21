@@ -67,6 +67,11 @@ programs.zsh.enable = true;
     vlc
     python3
     python3Packages.pip
+    xdg-utils
+    dbus
+    ranger
+    htop
+    p7zip
 
   ];
 

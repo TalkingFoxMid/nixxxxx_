@@ -8,7 +8,7 @@
 
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
-  networking.firewall.allowedTCPPorts = [ 16666 ];
+  networking.firewall.allowedTCPPorts = [ 16666 8188 ];
 
 
 }

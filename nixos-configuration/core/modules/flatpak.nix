@@ -1,6 +1,7 @@
 {config, pkgs, lib, ...}:
 {
   services.flatpak.enable = true;
+  services.dbus.enable = true;
   
   # Grant filesystem access to all Flatpak applications
   system.userActivationScripts.flatpak-filesystem-access = {
@@ -26,8 +27,10 @@
   
   xdg.portal = {
     enable = true;
+    wlr.enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
     ];
     config.common.default = "*";
   };
