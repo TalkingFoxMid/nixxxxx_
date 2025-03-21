@@ -11,7 +11,7 @@
 	  "DP-1, 3840x2160@239.99, 0x0, 1.50"
         ];
 
-        exec-once = "hyprpaper & waybar";
+        exec-once = "hyprpaper";
 
         env = [
           "XCURSOR_SIZE,24"
@@ -40,8 +40,8 @@
           gaps_in = 5;
           gaps_out = 20;
           border_size = 2;
-          "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-          "col.inactive_border" = "rgba(595959aa)";
+          "col.active_border" = "rgba(d79921ee) rgba(b8bb26ee) 45deg";
+          "col.inactive_border" = "rgba(928374aa)";
           layout = "dwindle";
           allow_tearing = false;
         };
@@ -52,6 +52,7 @@
             enabled = true;
             size = 3;
             passes = 1;
+            vibrancy = 0.1;
           };
         };
 

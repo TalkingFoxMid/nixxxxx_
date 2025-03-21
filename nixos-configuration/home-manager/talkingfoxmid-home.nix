@@ -64,47 +64,4 @@
     enable = true;
     userSettings = { "window.titleBarStyle" = "custom"; };
   };
-
-  programs.waybar = {
-    enable = true;
-
-    settings = {
-      mainBar = {
-        position = "bottom";
-        monitor = "eDP-1";
-        height = 25;
-        modules-left = [
-          "hyprland/workspaces"
-          "river/tags"
-          "sway/workspaces"
-          "tray"
-        ];
-	modules-right = [
-            "privacy"
-            "network"
-            "custom/wireguard"
-            "custom/teavpn"
-            "pulseaudio"
-            "battery"
-            "custom/date"
-            "clock"
-          ];
-	"privacy" = {
-	  "icon-spacing" = 4;
-	  "icon-size" = 18;
-	  "transition-duration" = 250;
-	};
-	"pulseaudio" = {
-	  "format" = "{icon}{volume}%";
-	  "format-muted" = "󰖁";
-	  "on-click" = "amixer -q set Master toggle-mute";
-	  "format-icons" = [
-	    "󰕿"
-	    "󰖀"
-	    "󰕾"
-	  ];
-	};
-      };
-    };
-  };
 }
