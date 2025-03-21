@@ -4,7 +4,7 @@
   programs.zsh = {
     enable = true;
     initExtra = ''
-      starfetch
+      neofetch
       
       # Function to check if we're inside a distrobox container
       # and modify the prompt accordingly

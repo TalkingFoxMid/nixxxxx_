@@ -1,2 +1,2 @@
 #!/bin/sh
-distrobox enter cuda-container-5090 -- bash -c "source ./venv/bin/activate && exec \$SHELL"
+distrobox enter cuda-container-5090
