@@ -30,6 +30,9 @@
     hyprpaper
     jq
     font-awesome
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    material-icons
   ];
 
   home.file = {

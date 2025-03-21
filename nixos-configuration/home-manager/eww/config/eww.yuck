@@ -41,7 +41,8 @@
     (button :class "workspace-button ${current_workspace == 7 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 7" "7")
     (button :class "workspace-button ${current_workspace == 8 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 8" "8")
     (button :class "workspace-button ${current_workspace == 9 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 9" "9")
-    (button :class "workspace-button ${current_workspace == 10 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 10" "0")))
+    (button :class "workspace-button ${current_workspace == 10 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 10" "0")
+    (button :class "workspace-button ${current_workspace == 11 ? 'active' : ''}" :onclick "hyprctl dispatch workspace 11" "")))
 
 (defwidget system []
   (box :class "system-info"

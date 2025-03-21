@@ -9,6 +9,7 @@
   home.packages = with pkgs; [
     lm_sensors  # For CPU temperature monitoring
     pciutils    # Helps with hardware identification
+    font-awesome # For icons in the bar
     nvtop       # Provides NVIDIA monitoring tools
   ];
 

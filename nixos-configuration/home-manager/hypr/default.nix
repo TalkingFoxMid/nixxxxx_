@@ -95,6 +95,13 @@
           "size 1400 800,class:^(kitty-nvtop)$"
           "center,class:^(kitty-nvtop)$"
           "workspace special:nvtop,class:^(kitty-nvtop)$"
+          
+          # Discord rules - assign to workspace 11
+          "workspace 11,class:^(discord)$"
+          "workspace 11,class:^(WebCord)$"
+          # Add for any other Discord client variants you might use
+          "workspace 11,title:^(Discord)$"
+          "workspace 11,title:^(Discord Updater)$"
         ];
         
         bind = [
@@ -111,6 +118,9 @@
           "$mainMod, P, pseudo,"
           "$mainMod, J, togglesplit,"
 
+          # Discord shortcut - toggle workspace 11 and launch if not running
+          "$mainMod, D, exec, bash -c 'hyprctl dispatch workspace 11 && (pgrep -x discord || pgrep -f Discord) > /dev/null || flatpak run com.discordapp.Discord'"
+          
           # Screenshot (using the screenshot script)
           "$mainMod, S, exec, screenshot"
           
@@ -147,6 +157,7 @@
           "$mainMod SHIFT, 8, movetoworkspace, 8"
           "$mainMod SHIFT, 9, movetoworkspace, 9"
           "$mainMod SHIFT, 0, movetoworkspace, 10"
+          "$mainMod SHIFT, D, movetoworkspace, 11"
 
           # Special workspace
           "$mainMod, grave, togglespecialworkspace, magic"
@@ -177,6 +188,7 @@
             "8, monitor:DP-1"
             "9, monitor:DP-1"
             "10, monitor:DP-2"
+            "11, monitor:DP-1, discord"
         ];
       };
     };
