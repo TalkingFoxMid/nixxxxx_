@@ -1,0 +1,2 @@
+#!/bin/sh
+distrobox enter cuda-container-5090

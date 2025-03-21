@@ -11,6 +11,7 @@
     ./git
     ./neovim
     ./hypr
+    ./zsh
     ./eww
   ];
 
@@ -55,14 +56,6 @@
     '';
   };
 
-  programs.zsh = {
-  enable = true;
-  initExtra = "starfetch";
-  shellAliases = {
-    ll = "ls -l";
-    update = "sudo nixos-rebuild switch";
-  };
-  };
   programs.vscode = {
     enable = true;
     userSettings = { "window.titleBarStyle" = "custom"; };
