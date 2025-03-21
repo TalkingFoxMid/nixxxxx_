@@ -30,16 +30,30 @@ $gray: #928374;
 }
 
 .workspace-button {
-  padding: 0 6px;
+  padding: 2px 8px;
   color: $gray;
   font-weight: bold;
-  
+  border-radius: 6px;
+  margin: 0 2px;
+  transition: all 0.2s ease;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    background-color: rgba(146, 131, 116, 0.2);
+  }
+
   &.active {
     color: $yellow;
   }
   
   &:hover {
     color: $fg_color;
+  }
+  
+  &.active {
+    color: $yellow;
+    background-color: rgba(215, 153, 33, 0.2);
+    border-bottom: 2px solid $yellow;
   }
 }
 
