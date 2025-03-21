@@ -3,7 +3,21 @@
 {
   programs.zsh = {
     enable = true;
-    initExtra = "starfetch";
+    initExtra = ''
+      starfetch
+      
+      # Function to check if we're inside a distrobox container
+      # and modify the prompt accordingly
+      function container_prompt_info() {
+        if [[ -n "$CONTAINER_ID" ]]; then
+          echo "%F{yellow}[%F{red}📦 %F{green}$CONTAINER_ID%F{yellow}]%f "
+        fi
+      }
+      
+      # Add container indicator to the prompt
+      export PROMPT='$(container_prompt_info)'$PROMPT
+    '';
+    
     shellAliases = {
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
