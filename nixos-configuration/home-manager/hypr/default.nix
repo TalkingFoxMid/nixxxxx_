@@ -102,8 +102,11 @@
           # Add for any other Discord client variants you might use
           "workspace 11,title:^(Discord)$"
           "workspace 11,title:^(Discord Updater)$"
+
+          # Add Zen Browser rules - assign to workspace 12
+          "workspace 12,class:^(Zen)$"
         ];
-        
+
         bind = [
           # Application launchers
           "$mainMod, Return, exec, kitty"
@@ -119,8 +122,11 @@
           "$mainMod, J, togglesplit,"
 
           # Discord shortcut - toggle workspace 11 and launch if not running
-          "$mainMod, D, exec, bash -c 'hyprctl dispatch workspace 11 && (pgrep -x discord || pgrep -f Discord) > /dev/null || flatpak run com.discordapp.Discord'"
+          "$mainMod, D, exec, bash -c 'hyprctl dispatch workspace 11; com.discordapp.Discord'"
           
+          # Zen Browser shortcut - toggle workspace 12 and launch if not running
+          "$mainMod, B, exec, bash -c 'hyprctl dispatch workspace 12; if ! flatpak ps | grep -q app.zen_browser.zen; then flatpak run app.zen_browser.zen; fi'"
+
           # Screenshot (using the screenshot script)
           "$mainMod, S, exec, screenshot"
           
@@ -158,6 +164,7 @@
           "$mainMod SHIFT, 9, movetoworkspace, 9"
           "$mainMod SHIFT, 0, movetoworkspace, 10"
           "$mainMod SHIFT, D, movetoworkspace, 11"
+          "$mainMod SHIFT, B, movetoworkspace, 12"
 
           # Special workspace
           "$mainMod, grave, togglespecialworkspace, magic"
@@ -189,6 +196,7 @@
             "9, monitor:DP-1"
             "10, monitor:DP-2"
             "11, monitor:DP-1, discord"
+            "12, monitor:DP-1, zen"
         ];
       };
     };
