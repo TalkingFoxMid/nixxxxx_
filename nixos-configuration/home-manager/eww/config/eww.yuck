@@ -8,6 +8,21 @@
 (defpoll network :interval "5s" "scripts/get_network")
 (defpoll active_workspace :interval "100ms" "hyprctl activeworkspace | grep 'workspace ID' | head -n 1 | awk '{print $3}'")
 
+;; Define workspace names mapping
+(defvar workspace_names '{
+  "1": "1",
+  "2": "2",
+  "3": "3",
+  "4": "4",
+  "5": "5",
+  "6": "6",
+  "7": "7",
+  "8": "8",
+  "9": "9",
+  "10": "0",
+  "11": ""
+}')
+
 ;; Widget definitions
 (defwidget bar []
   (centerbox :orientation "h" :class "bar"
@@ -39,11 +54,14 @@
         (button
           :class "workspace-button ${active_workspace == i ? 'active' : ''}"
           :onclick "hyprctl dispatch workspace ${i}"
-          {i == 10 ? "0" : i})))
-    (button
-      :class "workspace-button ${active_workspace == 11 ? 'active' : ''}"
-      :onclick "hyprctl dispatch workspace 11"
-      "")))
+          {workspace_names[i]}))
+
+      (button
+            :class "workspace-button ${active_workspace == 12 ? 'active' : ''}"
+            :onclick "hyprctl dispatch workspace 12"
+            "")
+  )
+    ))
 
 (defwidget system []
   (box :class "system-info"

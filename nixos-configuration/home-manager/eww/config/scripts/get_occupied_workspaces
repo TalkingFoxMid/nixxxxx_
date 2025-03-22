@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # Get occupied workspaces (exclude workspace 11 which has its own dedicated button)
-WORKSPACES=$(hyprctl workspaces | grep 'workspace ID' | awk '{print $3}' | grep -E '^[0-9]+$' | grep -v '^11$' | sort -n)
+WORKSPACES=$(hyprctl workspaces | grep 'workspace ID' | awk '{print $3}' | grep -E '^[0-9]+$' | grep -v '^12$' | sort -n)
 ACTIVE=$(hyprctl activeworkspace | grep 'workspace ID' | awk '{print $3}')
 
 # Make sure active workspace is included (except workspace 11 which has a separate button)
-if [ "$ACTIVE" != "11" ] && ! echo "$WORKSPACES" | grep -q "^$ACTIVE$"; then
+if [ "$ACTIVE" != "12" ] && ! echo "$WORKSPACES" | grep -q "^$ACTIVE$"; then
   WORKSPACES="$WORKSPACES
 $ACTIVE"
 fi
