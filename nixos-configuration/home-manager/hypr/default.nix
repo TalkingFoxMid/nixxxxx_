@@ -95,6 +95,12 @@
           "size 1400 800,class:^(kitty-nvtop)$"
           "center,class:^(kitty-nvtop)$"
           "workspace special:nvtop,class:^(kitty-nvtop)$"
+
+          # tfloat1 rules
+          "float,class:^(kitty-tfloat1)$"
+          "size 1400 800,class:^(kitty-tfloat1)$"
+          "center,class:^(kitty-tfloat1)$"
+          "workspace special:tfloat1,class:^(kitty-tfloat1)$"
           
           # Discord rules - assign to workspace 11
           "workspace 11,class:^(discord)$"
@@ -114,8 +120,7 @@
           "$mainMod, M, exit,"
           "$mainMod, E, exec, dolphin" 
           "$mainMod, F, exec, fuzzel"
-          ", F12, exec, kitty --class kitty-btop -e btop"
-          ", F12, togglespecialworkspace, btop"
+          ", F12, exec, bash -c 'if ! hyprctl clients | grep -q \"class: kitty-btop\"; then kitty --class kitty-btop -e btop; fi; hyprctl dispatch togglespecialworkspace btop'"
           "$mainMod, V, togglefloating,"
           "$mainMod, R, exec, wofi --show drun"
           "$mainMod, P, pseudo,"
@@ -130,9 +135,12 @@
           # Screenshot (using the screenshot script)
           "$mainMod, S, exec, screenshot"
           
-          # Toggle nvtop overlay with F11
-          ", F11, exec, kitty --class kitty-nvtop -e nvtop"
-          ", F11, togglespecialworkspace, nvtop"
+          # Toggle nvtop overlay with F11 (with check for existing window)
+          ", F11, exec, bash -c 'if ! hyprctl clients | grep -q \"class: kitty-nvtop\"; then kitty --class kitty-nvtop -e nvtop; fi; hyprctl dispatch togglespecialworkspace nvtop'"
+
+
+          ", F1, exec, bash -c 'if ! hyprctl clients | grep -q \"class: kitty-tfloat1\"; then kitty --class kitty-tfloat1; fi; hyprctl dispatch togglespecialworkspace tfloat1'"
+
 
           # Focus movement
           "$mainMod, left, movefocus, l"
@@ -173,7 +181,7 @@
           # Close monitoring windows
           "$mainMod, Escape, execr, hyprctl dispatch closewindow kitty-btop"
           "$mainMod SHIFT, Escape, execr, hyprctl dispatch closewindow kitty-nvtop"
-          
+
           # Volume control using Fn keys
           ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
           ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
