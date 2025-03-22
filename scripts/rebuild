@@ -9,4 +9,4 @@ sudo mkdir /etc/nixos/home-manager
 sudo rm /etc/nixos/flake.nix
 
 sudo cp -R ~/nix-state/nixos-configuration/* /etc/nixos/
-sudo nixos-rebuild switch
+sudo nixos-rebuild switch --upgrade
