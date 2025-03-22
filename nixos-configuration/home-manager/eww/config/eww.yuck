@@ -4,6 +4,7 @@
 (defpoll volume :interval "200ms" "scripts/get_volume")
 (defpoll cpu_temp :interval "3s" "scripts/get_cpu_temp")
 (defpoll gpu_temp :interval "3s" "scripts/get_gpu_temp")
+(defpoll occupied_workspaces :interval "1s" "scripts/get_occupied_workspaces")
 (defpoll network :interval "5s" "scripts/get_network")
 (defpoll active_workspace :interval "100ms" "hyprctl activeworkspace | grep 'workspace ID' | head -n 1 | awk '{print $3}'")
 
@@ -34,7 +35,7 @@
        :halign "start"
   (box
       :space-evenly true
-      (for i in "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      (for i in occupied_workspaces
         (button
           :class "workspace-button ${active_workspace == i ? 'active' : ''}"
           :onclick "hyprctl dispatch workspace ${i}"
