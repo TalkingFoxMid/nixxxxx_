@@ -25,6 +25,7 @@
   home.stateVersion = "24.05";
 
   home.packages = with pkgs; [
+    zoxide
     neofetch
     btop
     hyprpaper
@@ -62,5 +63,11 @@
   programs.vscode = {
     enable = true;
     userSettings = { "window.titleBarStyle" = "custom"; };
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [];
   };
 }
