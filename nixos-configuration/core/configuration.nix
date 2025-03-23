@@ -34,8 +34,9 @@
 
   # Mount point for nvme1n1p4 drive
   fileSystems."/mnt/nn" = {
-    device = "/dev/nvme1n1p4";
+    device = "/dev/disk/by-uuid/27b59008-a2c6-4003-be97-d9f0ed8b9461";
     fsType = "ext4";
+    options = [ "nofail" "x-systemd.device-timeout=10s" ];
   };
 
   # Allow unfree packages
