@@ -26,6 +26,7 @@
       ./modules/sws.nix
       ./modules/gc.nix
       ./modules/nvidia-power-limit.nix
+      ./modules/mpd.nix
       ./modules/webdav.nix
 
     ];
@@ -75,6 +76,7 @@ programs.zsh.enable = true;
     dbus
     ranger
     htop
+    ncmpcpp
     p7zip
 
   ];

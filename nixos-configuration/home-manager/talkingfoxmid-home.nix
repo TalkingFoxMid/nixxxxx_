@@ -12,6 +12,7 @@
     ./neovim
     ./hypr
     ./zsh
+    ./mpd
     ./eww
   ];
 
@@ -31,6 +32,7 @@
     hyprpaper
     jq
     font-awesome
+    mpc_cli
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
     material-icons

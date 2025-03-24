@@ -23,6 +23,8 @@
       update = "sudo nixos-rebuild switch";
       rebuild = "~/nix-state/scripts/rebuild";
       nixed = "~/nix-state/scripts/nixed";
+      music = "ncmpcpp";
+      mp = "mpc";
       cls = "clear";
     };
 
