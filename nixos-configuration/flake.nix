@@ -9,20 +9,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, home-manager, hyprland, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, agenix, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./core/configuration.nix
 
-        hyprland.nixosModules.default
-
+        agenix.nixosModules.default
 
         home-manager.nixosModules.home-manager
         {
@@ -30,6 +26,9 @@
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.talkingfoxmid = import ./home-manager/talkingfoxmid-home.nix;
+        }
+        {
+          environment.systemPackages = [ agenix.packages.x86_64-linux.default ];
         }
       ];
     };
