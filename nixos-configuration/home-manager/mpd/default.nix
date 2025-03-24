@@ -1,5 +1,12 @@
 {users, config, pkgs, ...}:
 {
+  # Add MPD and related tools
+  home.packages = with pkgs; [
+    mpc_cli
+    ncmpcpp
+    ncmpc
+  ];
+
   # Configure ncmpcpp client
   programs.ncmpcpp = {
     enable = true;
@@ -31,4 +38,5 @@
       centered_cursor = "yes";
     };
   };
+
 }

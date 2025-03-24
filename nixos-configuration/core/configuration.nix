@@ -13,7 +13,6 @@
       ./modules/virtualisation.nix
       ./modules/networking.nix
       ./modules/users.nix
-      ./modules/audio.nix
       ./modules/nvidia.nix
       ./modules/locale.nix
       ./modules/boot.nix
@@ -76,7 +75,6 @@ programs.zsh.enable = true;
     dbus
     ranger
     htop
-    ncmpcpp
     p7zip
 
   ];

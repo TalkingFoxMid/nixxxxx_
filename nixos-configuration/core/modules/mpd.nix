@@ -20,21 +20,10 @@
     extraConfig = ''
       # PulseAudio output
       audio_output {
-        type "pulse"
-        name "Pipewire Playback"
-      }
-      
-      # HTTP stream output (optional)
-      audio_output {
-        type "httpd"
-        name "HTTP Stream"
-        encoder "vorbis"
-        port "8000"
-        bitrate "192"
-        format "44100:16:2"
-        always_on "no"
-        tags "yes"
-      }
+        type     "pipewire"
+        name     "PipeWire Sound Server"
+        enabled  "yes"
+       }
 
       # Visualizer output for ncmpcpp
       audio_output {

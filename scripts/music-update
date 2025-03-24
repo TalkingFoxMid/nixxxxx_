@@ -1,16 +1,35 @@
 #!/bin/sh
 
-# Ensure music directory exists
-if [ ! -d "/mnt/webdav/music" ]; then
-  echo "Creating music directory on WebDAV..."
-  mkdir -p /mnt/webdav/music
-fi
+# Enhanced music update script with more functionality
+set -e
 
-# Update MPD database
-echo "Updating MPD database..."
-mpc update
+check_mount() {
+  if ! mountpoint -q /mnt/webdav; then
+    echo "WebDAV is not mounted. Attempting to mount..."
+    sudo mount /mnt/webdav || {
+      echo "Failed to mount WebDAV. Please check your connection and credentials."
+      exit 1
+    }
+  fi
+}
 
-# Wait for update to complete and show stats
-sleep 2
-echo "Music library stats:"
-mpc stats
+ensure_dirs() {
+  if [ ! -d "/mnt/webdav/music" ]; then
+    echo "Creating music directory on WebDAV..."
+    mkdir -p /mnt/webdav/music
+  fi
+}
+
+update_mpd() {
+  echo "Updating MPD database..."
+  if ! pgrep -x mpd > /dev/null; then
+    echo "MPD is not running. Starting service..."
+    systemctl --user restart mpd || sudo systemctl restart mpd
+  fi
+  
+  mpc update
+  echo "Waiting for database update to complete..."
+  sleep 3
+  echo "Music library stats:"
+  mpc stats
+}
