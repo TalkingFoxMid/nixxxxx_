@@ -25,10 +25,10 @@
       ./modules/sws.nix
       ./modules/gc.nix
       ./modules/nvidia-power-limit.nix
-      ./modules/mpd.nix
       ./modules/webdav.nix
 
     ];
+  systemd.user.services.mpd.requires = ["mnt-webdav.mount"];
 
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
