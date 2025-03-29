@@ -94,6 +94,10 @@
           "float,class:^(kitty-nvtop)$"
           "size 1400 800,class:^(kitty-nvtop)$"
           "center,class:^(kitty-nvtop)$"
+          # ncmpcpp rules
+          "float,class:^(kitty-ncmpcpp)$"
+          "size 1600 900,class:^(kitty-ncmpcpp)$"
+          "center,class:^(kitty-ncmpcpp)$"
           "workspace special:nvtop,class:^(kitty-nvtop)$"
 
           # tfloat1 rules
@@ -137,6 +141,9 @@
           
           # Toggle nvtop overlay with F11 (with check for existing window)
           ", F11, exec, bash -c 'if ! hyprctl clients | grep -q \"class: kitty-nvtop\"; then kitty --class kitty-nvtop -e nvtop; fi; hyprctl dispatch togglespecialworkspace nvtop'"
+
+          # Toggle ncmpcpp music player with F2 (with check for existing window)
+          ", F2, exec, bash -c 'if ! hyprctl clients | grep -q \"class: kitty-ncmpcpp\"; then kitty --class kitty-ncmpcpp -e ncmpcpp; fi; hyprctl dispatch togglespecialworkspace ncmpcpp'"
 
 
           ", F1, exec, bash -c 'if ! hyprctl clients | grep -q \"class: kitty-tfloat1\"; then kitty --class kitty-tfloat1; fi; hyprctl dispatch togglespecialworkspace tfloat1'"
