@@ -26,6 +26,7 @@
       ./modules/gc.nix
       ./modules/nvidia-power-limit.nix
       ./modules/webdav.nix
+      ./modules/vlc.nix
 
     ];
   systemd.user.services.mpd.requires = ["mnt-webdav.mount"];

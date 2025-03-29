@@ -11,7 +11,11 @@
 	  "DP-1, 3840x2160@239.99, 0x0, 1.50"
         ]; 
 
-        exec-once = ["hyprpaper" "eww daemon" "eww open bar"];
+        exec-once = [
+          "hyprpaper" 
+          "eww daemon" 
+          "eww open bar"
+        ];
 
         env = [
           "XCURSOR_SIZE,24"
@@ -113,6 +117,9 @@
           "workspace 11,title:^(Discord)$"
           "workspace 11,title:^(Discord Updater)$"
 
+          # VLC rule for better handling
+          "float,class:^(vlc)$,title:^(Extended Settings)$"
+          
           # Add Zen Browser rules - assign to workspace 12
           "workspace 12,class:^(Zen)$"
         ];

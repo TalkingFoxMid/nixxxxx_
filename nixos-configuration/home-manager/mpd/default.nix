@@ -22,9 +22,17 @@
       listenAddress = "127.0.0.1";
       port = 6600;
     };
+
     
     # Add audio outputs
     extraConfig = ''
+      # Audio buffer settings for improved performance
+      audio_buffer_size              "8192"
+      buffer_before_play             "25%"
+
+      # Memory caching for tracks to improve playback over network
+      max_output_buffer_size         "16384"
+
       # PulseAudio output
       audio_output {
         type     "pipewire"
