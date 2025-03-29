@@ -9,7 +9,10 @@
       settings = {
         monitor = [
 	  "DP-1, 3840x2160@239.99, 0x0, 1.50"
-        ]; 
+        ];
+        xwayland = {
+          force_zero_scaling = true;
+        };
 
         exec-once = [
           "hyprpaper" 
