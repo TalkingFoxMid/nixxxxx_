@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Get external IP address with timeout and fallback
+IP=$(curl --connect-timeout 5 -s ifconfig.me)
+
+# Check if we got a valid IP
+if [ -z "$IP" ] || ! echo "$IP" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'; then
+  # Try an alternative service as backup
+  IP=$(curl --connect-timeout 5 -s ipinfo.io/ip)
+fi
+
+# If still no valid IP, show a placeholder
+[ -z "$IP" ] || ! echo "$IP" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' && echo "No IP" || echo "$IP"
+

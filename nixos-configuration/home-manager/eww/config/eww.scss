@@ -124,6 +124,21 @@ $gray: #928374;
   color: $fg_color;
 }
 
+// IP Address
+.ip-box {
+  padding: 0 10px;
+}
+
+.ip-icon {
+  color: $blue;
+  font-size: 16px;
+  padding-right: 5px;
+}
+
+.ip-address {
+  color: $fg_color;
+}
+
 // Network
 .network-box {
   padding: 0 10px;

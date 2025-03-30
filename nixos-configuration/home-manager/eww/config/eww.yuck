@@ -5,6 +5,7 @@
 (defpoll cpu_temp :interval "3s" "scripts/get_cpu_temp")
 (defpoll gpu_temp :interval "3s" "scripts/get_gpu_temp")
 (defpoll occupied_workspaces :interval "10ms" "scripts/get_occupied_workspaces")
+(defpoll external_ip :interval "5s" "scripts/get_external_ip")
 (defpoll network :interval "5s" "scripts/get_network")
 (defpoll active_workspace :interval "100ms" "hyprctl activeworkspace | grep 'workspace ID' | head -n 1 | awk '{print $3}'")
 
@@ -41,7 +42,7 @@
 
 (defwidget right []
   (box :orientation "h" :halign "end" :space-evenly false
-    (volume-module)))
+    (ip-module) (volume-module)))
 
 (defwidget workspaces []
   (box :class "workspaces"
@@ -87,6 +88,13 @@
        :space-evenly false
     (label :class "volume-icon" :text "")
     (label :class "volume-value" :text "${volume}%")))
+
+(defwidget ip-module []
+  (box :class "ip-box"
+       :orientation "h"
+       :space-evenly false
+    (label :class "ip-icon" :text "")
+    (label :class "ip-address" :text "${external_ip}")))
 
 ;; Windows
 (defwindow bar
