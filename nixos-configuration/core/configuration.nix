@@ -26,7 +26,7 @@
       ./modules/gc.nix
       ./modules/nvidia-power-limit.nix
       ./modules/webdav.nix
-      ./modules/vlc.nix
+      ./modules/mpv.nix
 
     ];
   systemd.user.services.mpd.requires = ["mnt-webdav.mount"];
@@ -69,7 +69,7 @@ programs.zsh.enable = true;
     pass
     eww
     grim
-    vlc
+    mpv
     python3
     python3Packages.pip
     xdg-utils
