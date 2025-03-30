@@ -1,1 +1,91 @@
-sudo openvpn ~/ovpn/1.ovpn
+# Script to connect to OpenVPN using NetworkManager
+# This script handles both import and connection
+
+CONFIG_PATH="/home/talkingfoxmid/.openvpn/config.ovpn"
+CONNECTION_NAME="NixOS-VPN"
+
+# Check if the VPN configuration exists
+if [ ! -f "$CONFIG_PATH" ] && [ "$1" != "--connect-only" ]; then
+  echo "Error: OpenVPN configuration not found at $CONFIG_PATH"
+  exit 1
+fi
+
+# Function to find imported VPN connections
+find_vpn_connection() {
+  # Try to find the connection name by ID first
+  if [ -n "$1" ]; then
+    nmcli -g NAME connection show uuid "$1" 2>/dev/null
+    return
+  fi
+
+  # Otherwise list all VPN connections
+  nmcli -g NAME,TYPE connection show | grep vpn | cut -d: -f1 | head -n 1
+}
+
+# Check if we have a connection named "config" or our desired name
+if nmcli connection show | grep -q "^config "; then
+  echo "Found 'config' VPN connection, renaming to '$CONNECTION_NAME'..."
+  nmcli connection modify "config" connection.id "$CONNECTION_NAME"
+  echo "Connection renamed."
+elif nmcli connection show | grep -q "^$CONNECTION_NAME "; then
+  echo "VPN connection '$CONNECTION_NAME' already exists."
+else
+  # Only import if we're not in connect-only mode
+  if [ "$1" != "--connect-only" ]; then
+    echo "Importing OpenVPN configuration..."
+    RESULT=$(nmcli connection import type openvpn file "$CONFIG_PATH" 2>&1)
+    echo "$RESULT"
+
+    # Extract UUID if possible
+    UUID=$(echo "$RESULT" | grep -oP "Connection '.*?' \(\K[0-9a-f-]+(?=\))")
+
+    if [ -n "$UUID" ]; then
+      CONN_NAME=$(find_vpn_connection "$UUID")
+
+      if [ -n "$CONN_NAME" ]; then
+        echo "Renaming connection '$CONN_NAME' to '$CONNECTION_NAME'..."
+        nmcli connection modify "$CONN_NAME" connection.id "$CONNECTION_NAME"
+        echo "Connection renamed."
+      else
+        echo "Couldn't find the imported connection by UUID."
+
+        # Try to find any VPN connection
+        VPN_NAME=$(find_vpn_connection)
+        if [ -n "$VPN_NAME" ]; then
+          echo "Found VPN connection '$VPN_NAME', renaming to '$CONNECTION_NAME'..."
+          nmcli connection modify "$VPN_NAME" connection.id "$CONNECTION_NAME"
+          echo "Connection renamed."
+        else
+          echo "No VPN connections found."
+          exit 1
+        fi
+      fi
+    else
+      echo "Failed to extract UUID of the imported connection."
+      exit 1
+    fi
+  else
+    echo "No VPN connection found and not importing in connect-only mode."
+    exit 1
+  fi
+fi
+
+# Now connect to the VPN
+if nmcli connection show --active | grep -q "$CONNECTION_NAME"; then
+  echo "VPN is already connected. Disconnecting..."
+  nmcli connection down "$CONNECTION_NAME"
+  echo "VPN disconnected."
+else
+  echo "Connecting to VPN..."
+  nmcli connection up "$CONNECTION_NAME"
+  if [ $? -eq 0 ]; then
+    echo "VPN connected."
+  else
+    echo "Failed to connect to VPN."
+    exit 1
+  fi
+fi
+
+# Display connection status
+echo "Current VPN Status:"
+nmcli connection show --active | grep vpn || echo "No active VPN connections."

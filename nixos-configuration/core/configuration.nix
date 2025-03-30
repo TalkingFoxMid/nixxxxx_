@@ -20,6 +20,7 @@
       ./modules/flatpak.nix
       ./modules/pipewire.nix
       ./modules/lutris.nix
+      ./modules/agenix-secrets.nix
       ./modules/obsidian.nix
       ./modules/kubernetes.nix
       ./modules/sws.nix
@@ -53,7 +54,6 @@
 
 programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
-    openvpn
     wl-clipboard
     bind
     grimblast
@@ -61,7 +61,6 @@ programs.zsh.enable = true;
     transmission_4-gtk
     gnupg
     picom
-    egl-wayland
     distrobox
     openvpn
     slurp

@@ -9,4 +9,5 @@ let
 in
 {
   "webdav-credentials.age".publicKeys = allKeys;
+  "openvpn-config.age".publicKeys = allKeys;
 }
