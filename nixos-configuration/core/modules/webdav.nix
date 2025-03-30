@@ -6,7 +6,7 @@
   ];
 
   fileSystems."/mnt/webdav" = {
-    device = "http://192.168.18.18/uploads";
+    device = "http://192.168.18.18/";
     fsType = "davfs";
   };
 
