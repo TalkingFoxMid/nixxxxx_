@@ -5,7 +5,7 @@
   # manage.
 
   imports = [
-    ./feh
+    ./timg
     ./kitty
     ./fuzzel
     ./git
@@ -13,6 +13,7 @@
     ./hypr
     ./zsh
     ./mpd
+    ./anki
     ./eww
   ];
 
