@@ -33,8 +33,8 @@
 
       # PulseAudio output
       audio_output {
-        type     "pipewire"
-        name     "PipeWire Sound Server"
+        type     "pulse"
+        name     "My PULSE Device"
         enabled  "yes"
        }
 
