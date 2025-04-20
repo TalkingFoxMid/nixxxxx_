@@ -28,6 +28,7 @@
       ./modules/nvidia-power-limit.nix
       ./modules/webdav.nix
       ./modules/mpv.nix
+      ./modules/i18n-input.nix
 
     ];
   systemd.user.services.mpd.requires = ["mnt-webdav.mount"];

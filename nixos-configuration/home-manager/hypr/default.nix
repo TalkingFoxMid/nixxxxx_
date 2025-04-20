@@ -18,6 +18,7 @@
           "hyprpaper" 
           "eww daemon" 
           "eww open bar"
+          "fcitx5 -d" # Start Fcitx5 input method
         ];
 
         env = [
@@ -202,6 +203,10 @@
           # Volume control using Fn keys
           ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
           ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
+
+
+          # Toggle Chinese input method (Alt+Shift+C for Chinese)
+          "ALT SHIFT, C, exec, fcitx5-remote -t"
         ];
 
         bindm = [
