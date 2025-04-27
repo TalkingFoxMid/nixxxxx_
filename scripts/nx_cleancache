@@ -1,5 +1,14 @@
-nix-collect-garbage
-nix store gc --delete-older-than 30d
-nix-env --delete-generations old
+# Удаляет старые поколения и освобождает место
+sudo nix-collect-garbage -d
+
+# Удаляет поколения старше 30 дней
+sudo nix-env --delete-generations +30d
+
+# Удаляет старые поколения системы
+sudo nixos-rebuild --delete-generations +30d boot
+
+# Очищает кеш Nix
 rm -rf ~/.cache/nix/*
 
+# Оптимизирует хранилище Nix
+sudo nix-store --optimise
