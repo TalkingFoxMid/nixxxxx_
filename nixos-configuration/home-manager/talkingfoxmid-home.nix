@@ -50,6 +50,14 @@
     '';
     PICULO = "123";
   };
+  
+  # Add fcitx5 configuration with larger font size
+  home.file.".config/fcitx5/conf/classicui.conf".text = ''
+    # Vertical Candidate List
+    Vertical Candidate List=False
+    # Font for Chinese text in candidate window
+    Font="Noto Sans CJK SC 24"
+  '';
 
   programs.home-manager.enable = true;
 

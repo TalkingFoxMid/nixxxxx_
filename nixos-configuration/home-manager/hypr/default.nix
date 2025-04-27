@@ -8,7 +8,7 @@
 
       settings = {
         monitor = [
-	  "DP-1, 3840x2160@239.99, 0x0, 1.50"
+	  "HDMI-A-1, 3840x2160@239.99, 0x0, 1.50"
         ];
         xwayland = {
           force_zero_scaling = true;
@@ -215,18 +215,18 @@
         ];
 
         workspace = [
-            "1, monitor:DP-1"
-            "2, monitor:DP-1"
-            "3, monitor:DP-1"
-            "4, monitor:DP-1"
-            "5, monitor:DP-1"
-            "6, monitor:DP-1"
-            "7, monitor:DP-1"
-            "8, monitor:DP-1"
-            "9, monitor:DP-1"
+            "1, monitor:HDMI-A-1"
+            "2, monitor:HDMI-A-1"
+            "3, monitor:HDMI-A-1"
+            "4, monitor:HDMI-A-1"
+            "5, monitor:HDMI-A-1"
+            "6, monitor:HDMI-A-1"
+            "7, monitor:HDMI-A-1"
+            "8, monitor:HDMI-A-1"
+            "9, monitor:HDMI-A-1"
             "10, monitor:DP-2"
-            "11, monitor:DP-1, discord"
-            "12, monitor:DP-1, zen"
+            "11, monitor:HDMI-A-1, discord"
+            "12, monitor:HDMI-A-1, zen"
         ];
       };
     };
