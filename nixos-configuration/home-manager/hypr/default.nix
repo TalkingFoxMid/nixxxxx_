@@ -117,6 +117,7 @@
           # Discord rules - assign to workspace 11
           "workspace 11,class:^(discord)$"
           "workspace 11,class:^(WebCord)$"
+          "workspace 13,class:^(todoist-electron)$"
           # Add for any other Discord client variants you might use
           "workspace 11,title:^(Discord)$"
           "workspace 11,title:^(Discord Updater)$"
@@ -126,6 +127,9 @@
           
           # Add Zen Browser rules - assign to workspace 12
           "workspace 12,class:^(zen)$"
+          
+          # Add Todoist rules - assign to workspace 13
+          "workspace 13,class:^(todoist-electron)$"
         ];
 
         bind = [
@@ -140,6 +144,9 @@
           "$mainMod, R, exec, wofi --show drun"
           "$mainMod, P, pseudo,"
           "$mainMod, J, togglesplit,"
+
+          # Todoist shortcut - toggle workspace 13 and launch if not running
+          "$mainMod, T, exec, bash -c 'hyprctl dispatch workspace 13; if ! hyprctl clients | grep -q \"class: todoist-electron\"; then todoist-electron; fi'"
 
           # Discord shortcut - toggle workspace 11 and launch if not running
           "$mainMod, D, exec, bash -c 'hyprctl dispatch workspace 11; com.discordapp.Discord'"
@@ -191,6 +198,7 @@
           "$mainMod SHIFT, 0, movetoworkspace, 10"
           "$mainMod SHIFT, D, movetoworkspace, 11"
           "$mainMod SHIFT, B, movetoworkspace, 12"
+          "$mainMod SHIFT, T, movetoworkspace, 13"
 
           # Special workspace
           "$mainMod, grave, togglespecialworkspace, magic"
@@ -227,6 +235,7 @@
             "10, monitor:DP-2"
             "11, monitor:HDMI-A-1, discord"
             "12, monitor:HDMI-A-1, zen"
+            "13, monitor:HDMI-A-1, todoist"
         ];
       };
     };
