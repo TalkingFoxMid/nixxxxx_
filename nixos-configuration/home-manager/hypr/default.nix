@@ -125,7 +125,7 @@
           "float,class:^(vlc)$,title:^(Extended Settings)$"
           
           # Add Zen Browser rules - assign to workspace 12
-          "workspace 12,class:^(Zen)$"
+          "workspace 12,class:^(zen)$"
         ];
 
         bind = [
