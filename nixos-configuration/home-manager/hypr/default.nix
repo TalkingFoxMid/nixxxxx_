@@ -119,8 +119,10 @@
           "workspace 11,class:^(WebCord)$"
           "workspace 13,class:^(todoist-electron)$"
           # Add for any other Discord client variants you might use
+          "workspace 14,class:^(Anki)$"
           "workspace 11,title:^(Discord)$"
           "workspace 11,title:^(Discord Updater)$"
+          "workspace 14,title:^(Anki)$"
 
           # VLC rule for better handling
           "float,class:^(vlc)$,title:^(Extended Settings)$"
@@ -130,6 +132,9 @@
           
           # Add Todoist rules - assign to workspace 13
           "workspace 13,class:^(todoist-electron)$"
+          
+          # Add Anki rules - assign to workspace 14
+          "workspace 14,class:^(anki-bin)$"
         ];
 
         bind = [
@@ -153,6 +158,9 @@
           
           # Zen Browser shortcut - toggle workspace 12 and launch if not running
           "$mainMod, B, exec, bash -c 'hyprctl dispatch workspace 12; if ! flatpak ps | grep -q app.zen_browser.zen; then flatpak run app.zen_browser.zen; fi'"
+
+          # Anki shortcut - toggle workspace 14 and launch if not running
+          "$mainMod, A, exec, bash -c 'hyprctl dispatch workspace 14; if ! hyprctl clients | grep -q \"class: Anki\"; then anki-bin; fi'"
 
           # Screenshot (using the screenshot script)
           "$mainMod, S, exec, screenshot"
@@ -199,6 +207,7 @@
           "$mainMod SHIFT, D, movetoworkspace, 11"
           "$mainMod SHIFT, B, movetoworkspace, 12"
           "$mainMod SHIFT, T, movetoworkspace, 13"
+          "$mainMod SHIFT, A, movetoworkspace, 14"
 
           # Special workspace
           "$mainMod, grave, togglespecialworkspace, magic"
@@ -236,6 +245,7 @@
             "11, monitor:HDMI-A-1, discord"
             "12, monitor:HDMI-A-1, zen"
             "13, monitor:HDMI-A-1, todoist"
+            "14, monitor:HDMI-A-1, anki"
         ];
       };
     };
