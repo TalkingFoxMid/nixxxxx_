@@ -14,6 +14,7 @@
     ./zsh
     ./mpd
     ./anki
+    ./claude-code
     ./eww
   ];
 
