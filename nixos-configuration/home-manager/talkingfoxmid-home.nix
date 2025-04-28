@@ -15,6 +15,7 @@
     ./mpd
     ./anki
     ./claude-code
+    ./vscode
     ./eww
     ./todoist
   ];
@@ -70,11 +71,6 @@
     ''
     set shiftwidth=2
     '';
-  };
-
-  programs.vscode = {
-    enable = true;
-    userSettings = { "window.titleBarStyle" = "custom"; };
   };
 
   programs.zoxide = {
