@@ -16,6 +16,7 @@
     ./anki
     ./claude-code
     ./eww
+    ./todoist
   ];
 
   home.username = "talkingfoxmid";
