@@ -52,6 +52,7 @@
     $HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels''${NIX_PATH:+:$NIX_PATH}
     '';
     PICULO = "123";
+    PASSWORD_STORE_DIR="/home/talkingfoxmid/pwds/desktop";
   };
   
   # Add fcitx5 configuration with larger font size
