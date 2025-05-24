@@ -29,6 +29,7 @@
       ./modules/webdav.nix
       ./modules/mpv.nix
       ./modules/i18n-input.nix
+      ./modules/android-studio.nix
 
     ];
   systemd.user.services.mpd.requires = ["mnt-webdav.mount"];
@@ -77,6 +78,8 @@ programs.zsh.enable = true;
     ranger
     htop
     p7zip
+    openjdk17
+    openjdk11
 
   ];
 

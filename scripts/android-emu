@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# Android Emulator launcher script with hardware acceleration
+
+# Check if KVM is available
+if [ ! -r /dev/kvm ]; then
+    echo "Warning: KVM not available. Emulator will be slow."
+    echo "Make sure your user is in the 'kvm' group: sudo usermod -a -G kvm \$USER"
+fi
+
+# Set up Android environment
+export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+export ANDROID_AVD_HOME="$HOME/.android/avd"
+export ANDROID_EMULATOR_USE_SYSTEM_LIBS=1
+
+# Create Android SDK directory if it doesn't exist
+mkdir -p "$ANDROID_HOME"
+mkdir -p "$ANDROID_AVD_HOME"
+
+# Check if emulator exists
+EMULATOR_PATH="$ANDROID_HOME/emulator/emulator"
+if [ ! -f "$EMULATOR_PATH" ]; then
+    echo "Android emulator not found at $EMULATOR_PATH"
+    echo "Please install Android SDK through Android Studio first."
+    exit 1
+fi
+
+# List available AVDs
+echo "Available Android Virtual Devices:"
+"$EMULATOR_PATH" -list-avds
+
+# If no arguments provided, just list AVDs
+if [ $# -eq 0 ]; then
+    echo ""
+    echo "Usage: $0 <avd_name> [additional_emulator_options]"
+    echo "Example: $0 Pixel_4_API_30"
+    exit 0
+fi
+
+AVD_NAME="$1"
+shift
+
+# Launch emulator with hardware acceleration
+"$EMULATOR_PATH" -avd "$AVD_NAME" -gpu host -skin 1080x1920 -memory 4096 "$@"

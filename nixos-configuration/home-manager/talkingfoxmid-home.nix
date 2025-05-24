@@ -18,6 +18,7 @@
     ./vscode
     ./eww
     ./todoist
+    ./android-studio
   ];
 
   home.username = "talkingfoxmid";
