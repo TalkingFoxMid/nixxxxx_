@@ -3,7 +3,7 @@
 {
   programs.zsh = {
     enable = true;
-    initExtra = ''
+    initContent = ''
       neofetch
       
       # Function to check if we're inside a distrobox container

@@ -55,6 +55,7 @@
   programs.ncmpcpp = {
     enable = true;
     package = pkgs.ncmpcpp.override { visualizerSupport = true; };
+    mpdMusicDir = "/mnt/webdav/music";
     settings = {
       # Basic settings
       mpd_host = "localhost";

@@ -16,7 +16,7 @@
     nvidia-docker
   ];
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   services.xserver.displayManager.sessionCommands = ''
     nvidia-cdi-setup
   '';
